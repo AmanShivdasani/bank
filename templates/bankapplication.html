@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <style>h1{background-color:cyan; color:red }</style>
+    <center><h1>Welcome to python bank </h1>
+        <h2 style ="border: blue;color: orangered;">Account No. {{session.get("data")[0:4]}}</h2>
+    </center>
+    <font color="rgb" size="60">
+        1.Credit   
+        <br>
+        2.Debit   
+        <br>
+        3.Check_balance
+        <br>
+        4.Logout   
+        <form action="/login">
+        <label>choose from above[1,2,3,4]:</label>
+        <label "><input style="height: 50px; width: 150px;font-size: 35px;background-color: ghostwhite;" type ="text" name="choice"></label>
+        <label><input style="height: 50px; width: 150px;font-size: 35px;background-color: rgb(0, 0, 0) ;color: white;" type ="submit" ></label>
+        </form>
+        </font>
+        <a href="/bank">Home</a>
+        <marquee vspace = 500 style= "font-size:xx-large; bottom: 0 ; background-color: cyan; font-style: italic;">This project is only for development purposes only </marquee>
+</body>
+</html>
