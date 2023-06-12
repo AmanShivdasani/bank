@@ -1,27 +1,107 @@
 <!DOCTYPE html>
-<head>
-    <title>Login Page</title>
-</head>
+<html lang="en">
+  <head>
+    <title>login page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link  href=" static/Second.css ">
+    <link rel="stylesheet" href="static/first.css">
+    <link rel="stylesheet" href="static/third.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+
+    </style>
+  </head>
 <body>
-    <style>h1{background-color:cyan; color:red }</style>
-    <center><h1>Welcome to python bank </h1>
-        <h2 style ="border: blue;color: orangered;">Account No. {{session.get("data")[0:4]}}</h2>
-    </center>
-    <font color="rgb" size="60">
-        1.Credit   
-        <br>
-        2.Debit   
-        <br>
-        3.Check_balance
-        <br>
-        4.Logout   
-        <form action="/login">
-        <label>choose from above[1,2,3,4]:</label>
-        <label "><input style="height: 50px; width: 150px;font-size: 35px;background-color: ghostwhite;" type ="text" name="choice"></label>
-        <label><input style="height: 50px; width: 150px;font-size: 35px;background-color: rgb(0, 0, 0) ;color: white;" type ="submit" ></label>
-        </form>
-        </font>
-        <a href="/bank">Home</a>
-        <marquee vspace = 500 style= "font-size:xx-large; bottom: 0 ; background-color: cyan; font-style: italic;">This project is only for development purposes only </marquee>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-cyan w3-card w3-left-align w3-large">
+    <a href="/bank " class="w3-bar-item w3-button w3-padding-large w3-red w3-hover-white">Home </a>
+    <a href="/credit" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Credit</a>
+    <a href="/debit" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Debit</a>
+    <a href="/balance" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Balance</a>
+    <a href="/feedback" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Feedback</a>
+    <a href="/logout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-red">Logout</a>
+    <font class="w3-bar-item w3-button w3-white w3-right w3-hide-small w3-padding-large font-family-serif" >Account number :{{session.get("data").split(" ")[0]}}</font>
+</div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/credit" class="w3-bar-item w3-button w3-padding-large">Credit</a>
+    <a href="/debit" class="w3-bar-item w3-button w3-padding-large">Debit</a>
+    <a href="/balance" class="w3-bar-item w3-button w3-padding-large">Balance</a>
+    <a href="/logout" class="w3-bar-item w3-button w3-padding-large">Logout</a>
+    <a href="/feedback" class="w3-bar-item w3-button w3-padding-large">Feedback</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-center w3-cyan" style="padding:70px 16px">
+    <img src="{{url_for('static',filename='banklogo.png')}}"align="middle" width ="200px "/>
+    <h1 class="w3-margin w3-jumbo ">Campus Cash Bank</h1>
+    <p class="w3-xlarge">|By the students|For The Students|</p>
+    <a href ="/credit">
+    <button class="w3-button w3-black w3-padding-large w3-xlarge w3-margin-top">Credit</button>
+    </a>
+    <a href="/balance">
+    <button class="w3-button w3-black w3-padding-large w3-xlarge w3-margin-top">Balance</button>
+    </a>
+    <a href="/debit">
+    <button class="w3-button w3-black w3-padding-large w3-xlarge w3-margin-top">Debit</button>
+    </a>
+</header>
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Description</h1>
+      <h5 class="w3-padding-32">It is a simple and easy tool to manage and make transactions.</h5>
+
+      <p class="w3-text-grey">it is the best application which allows the user to acces the banking services directly.it allows the user to credit ,debit and transfer the money from one account to other in a safe and secured manner and keeps track of each and every transactions happening.</p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <i class="fa fa-bank w3-padding-64 w3-text-red w3-xjumbo"></i>
+    </div>
+  </div>
+</div>
+
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <i class="fa fa-rupee w3-padding-64 w3-text-red w3-margin-right w3-xjumbo"></i>
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Benefits</h1>
+      <h5 class="w3-padding-32">Make payments easy for you and your customers</h5>
+      <p class="w3-text-grey">
+        <ul>
+            <li>No convenience fee</li>
+            <li>Easy to access and use</li>
+            <li>keeps a proper track of transactions</li>
+        </ul>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Best transaction tracker for students</h1>
+</div>
+<footer class="w3-container w3-padding-64 w3-center w3-opacity"> 
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+ <p>This website was made by<br>
+  Aman Shivdasani
+</p>
+ </footer>
+
 </body>
 </html>

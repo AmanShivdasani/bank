@@ -1,11 +1,50 @@
 <!DOCTYPE html>
-<head>
-    <title>Login Page</title>
-</head>
-<body bgcolor="white">
-    <style>h1{ background-color: cyan; color:rgb(255, 0, 0) }</style>
-    <center><h1>Welcome to python bank </h1></center>
-    <font color ="Black" style="font-size: xx-large;" ><center>
+<html lang="en">
+  <head>
+    <title>Reset page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel ="stylesheet" href= ' static/Second.css '>
+    <link rel="stylesheet" href="static/first.css">
+    <link rel="stylesheet" href="static/third.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    </style>
+  </head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-cyan w3-card w3-left-align w3-large">
+    <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-red">Home</a>
+    <a href="/gateway?choice=1" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
+    <a href="/gateway?choice=2" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Signup</a>
+    <a href="/feedback" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Feedback</a>
+    <a href="/gateway?choice=3" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-red">Exit</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/gateway?choice=1" class="w3-bar-item w3-button w3-padding-large">Login</a>
+    <a href="/gateway?choice=2" class="w3-bar-item w3-button w3-padding-large">Signup</a>
+    <a href="/feedback" class="w3-bar-item w3-button w3-padding-large">Feedback</a>
+    <a href="/gateway?choice=3" class="w3-bar-item w3-button w3-padding-large">Exit</a>
+  </div>
+</div>
+<!-- Header -->
+<header class="w3-container w3-cyan w3-center" style="padding:70px 16px">
+  <img src="{{url_for('static',filename='banklogo.png')}}"align="middle" width ="200px "/>
+  <h1 class="w3-margin w3-jumbo">Campus Cash Bank</h1>
+  <p class="w3-xlarge">|By the students|For The Students|</p>
+  <a href="/gateway?choice=2">
+  <button class="w3-button w3-black w3-padding-large w3-xlarge w3-margin-top">Signup</button>
+  </a>
+</header>
+<br><br><br><br><br><br><br>
+    <center>
+    <font color ="Black" style="font-size: xx-large;" >
     <form action = "/otp" method ="post">
         <label>
             Account number:<input style="height: 50px; width: 300px;font-size: 35px;background-color: ghostwhite;" type = "text" name = "account" >
@@ -21,9 +60,25 @@
             <center> <input style="height: 50px; width: 150px;font-size: 35px;background-color: rgb(5, 5, 0) ;color: rgb(254, 249, 249);" type= "submit"></center>
         </label>
     </form>
+    <br><br>
+    <font style="color: red;height: 30px;">{{diff}}</font>
+    <br><br>
     </center>
     </font>
-    <a href="/logout">logout</a>
-    <marquee vspace = 500 style= "font-size:xx-large; bottom: 0 ; background-color: cyan; font-style: italic;">This project is only for development purposes only </marquee>
+    <a href="/gateway?choice=1">logout</a>
+    <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+        <h1 class="w3-margin w3-xlarge">Best transaction tracker for students</h1>
+    </div>
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity"> 
+      <div class="w3-xlarge w3-padding-32">
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+     </div>
+     <p>This website was made by<br>
+      Aman Shivdasani
+    </p>
+     <!-- Footer end. -->
+    </footer>
     </body>
     </html>

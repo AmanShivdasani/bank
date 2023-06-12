@@ -156,7 +156,7 @@ def verify():
         file.close()
         return render_template("account.html",account=num)
     else:
-        return "incorrect password"
+        return render_template("signup.html",diff="Please Enter correct details")
 @app.route("/update",methods=[ "POST", "GET"])
 def update():
     pass1 = request.args.get("pass1")

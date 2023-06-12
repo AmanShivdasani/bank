@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Index page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel ="stylesheet" href= ' static/Second.css '>
+    <link rel="stylesheet" href=' static/first.css ' >
+    <link rel="stylesheet" href="static/third.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    </style>
+  </head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-cyan w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="/gateway?choice=1" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
+    <a href="/gateway?choice=2" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Signup</a>
+    <a href="/gateway?choice=1" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Exit</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Feedback</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/gateway?choice=1" class="w3-bar-item w3-button w3-padding-large">Login</a>
+    <a href="/gateway?choice=2" class="w3-bar-item w3-button w3-padding-large">Signup</a>
+    <a href="/gateway?choice=3" class="w3-bar-item w3-button w3-padding-large">Exit</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Feedback</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-cyan w3-center" style="padding:70px 16px">
+  <img src="{{url_for('static',filename='banklogo.png')}}"align="middle" width ="200px "/>
+  <h1 class="w3-margin w3-jumbo">Campus Cash Bank</h1>
+  <p class="w3-xlarge">|By the students|For The Students|</p>
+</header>
+<div class="w3-container w3-grey w3-center w3-opacity w3-hover-white w3-padding-64 ">
+    <h1 class="w3-margin w3-xjumbo font-family-serif">Thank You</h1>
+</div>
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Best transaction tracker for students</h1>
+</div>
+<footer class="w3-container w3-padding-64 w3-center w3-opacity"> 
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+ <p>This website was made by<br>
+  Aman Shivdasani
+</p>
+ <!-- Footer end. -->
+ </footer>
