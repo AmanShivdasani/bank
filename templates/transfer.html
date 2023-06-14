@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>set-up page</title>
+    <title>Transfer page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link  href=" static/Second.css ">
@@ -25,6 +25,7 @@
     <a href="/balance" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Balance</a>
     <a href="/feedback" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Feedback</a>
     <a href="/logout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-red">Logout</a>
+    <font class="w3-bar-item w3-button w3-white w3-right w3-hide-small w3-padding-large font-family-serif" >Account number :{{session.get( "data").split(" ")[0]}}</font>
   </div>
 
   <!-- Navbar on small screens -->
@@ -42,17 +43,20 @@
     <h1 class="w3-margin w3-jumbo">Campus Cash Bank</h1>
     <p class="w3-xlarge">|By the students|For The Students|</p>
 </header>
-<br>
-<br>
-    <center><h1 class="w3-text-red">
-        Your account number is {{account}}.
-        Please note it down for further use.
-        Store it at a safe place.</h1>
-        </font>
+    <center>
+    <form action="/transaction" , method ="POST">
         <br>
-        <a href="/logout"><button class="w3-hover-white w3-white ">Home</button></a>
+        <label style="font-size: 50px;color:blue">Enter The amount to be credited <br><input style="height: 50px; width: 300px;font-size: 35px;background-color: ghostwhite;" type="text" name = "amount" ></label>
+        <br>
+        <label style="font-size: 50px;color:blue">Enter The Account Number Of reciever <br><input style="height: 50px; width: 300px;font-size: 35px;background-color: ghostwhite;" type="text" name = "account" ></label>
+        <br>
+        <label style="font-size: 50px;color:blue">Enter your password <br><input style="height: 50px; width: 300px;font-size: 35px;background-color: ghostwhite;" type="password" name = "pass" ></label>
+        <br>
+        <label><input style="height: 50px; width: 200px;font-size: 35px;background-color: rgb(0, 0, 0) ;color: white;" type= "submit">
+    </form>
     <br>
     <br>
+    <font style="color: red;height: 30px;">{{diff}}</font>
     <br>
     </center>
     <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">

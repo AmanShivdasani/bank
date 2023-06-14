@@ -62,7 +62,7 @@ def otp():
     record.close()
     data= data.split("\n")
     for i in data:
-        if len(account)>=1 and account in i[0:4]:
+        if len(account)>=1 and len(contact)==10 and account in i[0:4]:
             if contact in i and contact== i.split(" ")[3]:
                 session["data"]=i
                 a= render_template("otp.html")
@@ -80,7 +80,7 @@ def forgot():
 def amount_reduce():
     amount= request.args.get("amount")
     balance=session.get("data").split(" ")[4]
-    if int(amount) > int(balance):
+    if amount==""or int(amount) > int(balance):
         return render_template("debit.html",diff="Insufficient balance")
     elif int(amount) <=0:
         return render_template("debit.html",diff="minimum Transaction is \u20B9 1")
@@ -106,7 +106,7 @@ def amount_reduce():
 @app.route("/amount_add")
 def amount():
     amount= request.args.get("amount")
-    if int(amount)>0:
+    if amount =="" or int(amount)>0:
         data=session.get('data')
         file=open("record.txt","r")
         newdata=data.split(" ")
@@ -136,7 +136,7 @@ def verify():
     contact =request.args.get("contact")
     pass1 = request.args.get("pass1")
     pass2 = request.args.get("pass2")
-    if pass1 == pass2 and len(pass1)>=8 and f_name != "" and l_name != "" and contact !="" and email !="":
+    if pass1 == pass2 and len(pass1)>=8 and f_name != "" and l_name != "" and len(contact)==10 and email !="":
         #To take the uniques account numbers 
         record_file="token.txt"
         record= open(record_file,"r")
@@ -208,12 +208,96 @@ def store():
     feedback= request.args.get("feedback")
     if feedback != None:
         account =session.get("data").split(" ")[0]
-        feedback= account + ":" + feedback
+        feedback= account + ":" + feedback +"\n"
         record=open("feedback.txt","a")
         record.write(feedback)
         record.close()
         return render_template("login.html")
     else:
         return render_template("login.html")
+@app.route("/interest",methods=["GEt","PUT"])
+def interest():
+    return render_template("interest.html")
+@app.route("/calc",methods=["get","post"])
+def calc():
+    amount=request.args.get("amount")
+    year=request.args.get("year")
+    month=request.args.get("month")
+    if amount.isdigit() and year.isdigit() and month.isdigit() and int(amount)>0 and int(month)+int(year)>=1:
+        amount,year,month=int(amount),int(year),int(month)
+        time =year *12 +month
+        if time <=12:
+            interest =amount + 8*amount/100
+        elif time <=60:
+            interest =amount + 10*amount/100
+        elif time <=120:
+            interest =amount + 15*amount/100
+        else:
+            interest =amount + 20*amount/100
+        return render_template("interest.html",diff = f"The interest for {year} year and {month} month is \u20B9 {interest}.")
+    else:
+        return render_template("interest.html",diff="Please Enter Correct Details")
+@app.route("/transfer",methods = ["GET","POST"])
+def transfer():
+    return render_template("transfer.html")
+@app.route("/transaction",methods=["get","POST"])
+def transaction():
+    mine=session.get("data")
+    account =request.form["account"]
+    amount =request.form["amount"]
+    password=request.form["pass"]
+    balance=session.get("data").split(" ")[4]
+    if password == mine.split(" ")[5]:
+        record=open("record.txt","r")
+        data=record.read()
+        record.close()
+        data= data.split("\n")
+        for i in data:
+            if len(account)>=1 and account in i[0:4]:
+                    if amount==""or int(amount) > int(balance) :
+                        return render_template("transfer.html",diff="Insufficient balance")
+                    elif int(amount) <=0:
+                        return render_template(".html",diff="minimum Transaction is \u20B9 1")
+                    else:
+                        data=session.get('data')
+                        file=open("record.txt","r")
+                        newdata=data.split(" ")
+                        newdata[4]=str(int(newdata[4])-int(amount))
+                        newdata=" ".join(newdata)
+                        record=file.read()
+                        file.close()
+                        record=record.replace(data,newdata,)
+                        file=open("record.txt","w")
+                        file.write(record)
+                        file.close()
+                        transaction=open("bank_data\\"+data[0:4]+".txt","a")
+                        transaction.write("-"+amount+"\n")
+                        transaction.close()
+                        session["data"]= i
+                        data=session.get("data")
+                        file=open("record.txt","r")
+                        newdata=data.split(" ")
+                        newdata[4]=str(int(newdata[4])+int(amount))
+                        newdata=" ".join(newdata)
+                        record=file.read()
+                        file.close()
+                        record=record.replace(data,newdata,)
+                        file=open("record.txt","w")
+                        file.write(record)
+                        file.close()
+                        transaction=open("bank_data\\"+data[0:4]+".txt","a")
+                        transaction.write(amount+"\n")
+                        transaction.close()
+                        session["data"]= mine
+                        a=render_template("amount.html",amount=amount)
+                        return a
+                
+        else:
+            return render_template("transfer.html",diff="No Account Exist")
+    else:
+        return render_template("transfer.html",diff="Incorrect password")
+
+
+        
 if __name__== "__main__":
     app.run(host ="0.0.0.0",debug=True)

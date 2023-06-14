@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>login page</title>
+    <title>balance page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link  rel ="stylesheet" href ="static/first.css">
@@ -19,12 +19,13 @@
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-cyan w3-card w3-left-align w3-large">
-    <a href="/login/ " class="w3-bar-item w3-button w3-padding-large w3-red">Home </a>
+    <a href="/bank " class="w3-bar-item w3-button w3-padding-large w3-red">Home </a>
     <a href="/credit " class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> Credit</a>
     <a href="/debit" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Debit</a>
     <a href="/balance" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Balance</a>
     <a href="/feedback" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Feedback</a>
     <a href="/logout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-red">Logout</a>
+    <font class="w3-bar-item w3-button w3-white w3-right w3-hide-small w3-padding-large font-family-serif" >Account number :{{session.get( "data").split(" ")[0]}}</font>
   </div>
 
   <!-- Navbar on small screens -->
@@ -34,7 +35,6 @@
     <a href="/balance" class="w3-bar-item w3-button w3-padding-large">Balance</a>
     <a href="/logout" class="w3-bar-item w3-button w3-padding-large">Logout</a>
     <a href="/feedback" class="w3-bar-item w3-button w3-padding-large">Feedback</a>
-    <font class="w3-bar-item w3-button w3-white w3-right w3-hide-small w3-padding-large font-family-serif" >Account number :{{session.get("data").split(" ")[0]}}</font>
   </div>
 </div>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>set-up page</title>
+    <title>interest calculator</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link  href=" static/Second.css ">
@@ -42,16 +42,23 @@
     <h1 class="w3-margin w3-jumbo">Campus Cash Bank</h1>
     <p class="w3-xlarge">|By the students|For The Students|</p>
 </header>
-<br>
-<br>
-    <center><h1 class="w3-text-red">
-        Your account number is {{account}}.
-        Please note it down for further use.
-        Store it at a safe place.</h1>
-        </font>
+    <center>
+    <form action="/calc">
         <br>
-        <a href="/logout"><button class="w3-hover-white w3-white ">Home</button></a>
+        <label style="font-size: 50px;color:blue">Enter The amount of Loan : &nbsp;&nbsp;&nbsp;<input style="height: 50px; width: 300px;font-size: 35px;background-color: ghostwhite;" type="text" name = "amount" ></label>
+        <br>
+        <br>
+        <label style="font-size: 50px;color:blue">Enter The duration [yy:MM] : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="height: 50px; width: 100px;font-size: 35px;background-color: ghostwhite; " value="0000" type="text" name = "year" ></label>&nbsp;&nbsp;
+        <label><input style="height: 50px; width: 100px;font-size: 35px;background-color: ghostwhite;" type="text" value="00" name = "month" ></label>
+        <br>
+        <br>
+        <a>
+        <label><button style="height: 70px;font-size: 35px;background-color: rgb(0, 0, 0) ;color: white; " >Check Interest </button>
+        </a>
+    </form>
     <br>
+    <br>
+    <font class="w3-jumbo w3-red">{{diff}}</font>
     <br>
     <br>
     </center>
